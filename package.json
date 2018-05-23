@@ -1,0 +1,23 @@
+{
+  "name": "SRS-flashcards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deckexample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomgardiner/SRS-flashcards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomgardiner/SRS-flashcards/issues"
+  },
+  "homepage": "https://github.com/thomgardiner/SRS-flashcards#readme",
+  "dependencies": {
+    "moment": "^2.22.1"
+  }
+}
