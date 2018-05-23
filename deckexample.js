@@ -1,7 +1,7 @@
 const moment = require('moment');
 
 const Deck = function(){
-    let currentCard = null;
+    this.currentCard = null;
     this.items = [];
 
     //deck methods
@@ -24,14 +24,13 @@ const Deck = function(){
     },
     this.drawCard = function(){
         let card = this.getRandomCard();
-        currentCard = card;
-        card.lastSeen = moment();
+        this.currentCard = card;
     }
     this.gradeCurrentCard = function(){
-        currentCard.setLastSeen();
-        console.log("Last seen is now: " + currentCard.lastSeen.format("dddd, MMMM Do YYYY, h:mm:ss a"));
-        currentCard.calculateNextUp();
-        console.log("Card will appear again: " + currentCard.nextUp.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        this.currentCard.setLastSeen();
+        console.log("Last seen is now: " + this.currentCard.lastSeen.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        this.currentCard.calculateNextUp();
+        console.log("Card will appear again: " + this.currentCard.nextUp.format("dddd, MMMM Do YYYY, h:mm:ss a"));
     }
 }
 
@@ -65,6 +64,6 @@ newDeck.addCard("this is the front 4", "this is the back 4");
 
 newDeck.drawCard();
 newDeck.gradeCurrentCard();
-
+console.log(newDeck.currentCard);
 
 
