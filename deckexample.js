@@ -1,12 +1,14 @@
 const moment = require('moment');
+let newDeck = [];
 
 const Deck = function(){
+    this.idCount = 0;
     this.currentCard = null;
     this.items = [];
 
     //deck methods
     this.addCard = function(front, back){
-        let id = this.items.length;
+        let id = this.idCount++;
         let newCard = new Card(front, back, id);
         this.items.push(newCard);
     },
@@ -32,6 +34,15 @@ const Deck = function(){
         this.currentCard.calculateNextUp();
         console.log("Card will appear again: " + this.currentCard.nextUp.format("dddd, MMMM Do YYYY, h:mm:ss a"));
     }
+    this.printCurrentCard = function(){
+        console.log("|------------------------------------------------|");
+        console.log("Front: " + this.currentCard.front);
+        console.log("Back: " + this.currentCard.back);
+        console.log("Level: " + this.currentCard.level);
+        console.log("Last Seen: " + this.currentCard.lastSeen.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        console.log("Next Up: " + this.currentCard.nextUp.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        console.log("|------------------------------------------------|");
+    }
 }
 
 const Card = function(front, back, id){
@@ -39,8 +50,8 @@ const Card = function(front, back, id){
     this.back = back;
     this.id = id;
     this.created = moment();
-    this.lastSeen = 0;
-    this.nextUp = 0;
+    this.lastSeen = moment();
+    this.nextUp = moment();
     this.points = 0;
     this.level = 1;
 
@@ -50,20 +61,19 @@ const Card = function(front, back, id){
     }
     this.calculateNextUp = function(){
         let adjustment = this.level * 12; 
-        this.nextUp = this.lastSeen;
+        this.nextUp = moment();
         this.nextUp.add(adjustment, 'h');
     }
  
 }
 
-let newDeck = new Deck();
-newDeck.addCard("this is the front", "this is the back");
-newDeck.addCard("this is the front 2", "this is the back 2");
-newDeck.addCard("this is the front 3", "this is the back 3");
-newDeck.addCard("this is the front 4", "this is the back 4");
+const createTestDeck = function(num){
+    newDeck = new Deck();
+    for(i=0; i < num; i++){
+        newDeck.addCard("this is the front " + num, "this is the back " + num);
+    }
+}
 
+createTestDeck(3);
 newDeck.drawCard();
-newDeck.gradeCurrentCard();
-console.log(newDeck.currentCard);
-
-
+newDeck.printCurrentCard();
