@@ -1,18 +1,9 @@
 const Deck = function(){
     this.items = [];
-    this.learning = [];
-    this.know = [];
-    this.confident = [];
-    this.memorized = [];
-    this.mastered = [];
     this.addCard = function(front, back){
-        this.items.push({
-            id: this.items.length,
-            currentPile: 0,
-            front: front,
-            back: back,
-            points: 0
-        })
+        let id = this.items.length;
+        let newCard = new Card(front, back, id);
+        this.items.push(newCard);
     },
     this.findCard = function(id){
         let card = this.items.filter(function(x){
@@ -28,35 +19,16 @@ const Deck = function(){
     },
     this.drawCard = function(){
         let card = this.getRandomCard();
-        console.log(card.front);
+        console.log(card.created);
     }
 }
 
-
-// const findCard = function(deck, id){
-//     let card = deck.items.filter(function(x){
-//         return x.id === id;
-//     })
-//    card = card[0];
-//    console.log(card);
-//    return card;
-// }
-
-// const getRandomCard = function(deck){
-//     let random = Math.floor(Math.random() * deck.items.length);
-//     return findCard(deck, random);
-// }
-
-// const getCardPoints = function(card){
-//     console.log(card.points);
-// }
-
-// const drawCard = function(deck){
-//     let card = getRandomCard(deck);
-//     console.log(card.front);
-
-// }
-
+const Card = function(front, back, id){
+    this.front = front;
+    this.back = back;
+    this.id = id;
+    this.created = Date.now();
+}
 
 let newDeck = new Deck();
 newDeck.addCard("this is the front", "this is the back");
@@ -64,8 +36,6 @@ newDeck.addCard("this is the front 2", "this is the back 2");
 newDeck.addCard("this is the front 3", "this is the back 3");
 newDeck.addCard("this is the front 4", "this is the back 4");
 
-console.log(newDeck.drawCard());
+newDeck.drawCard();
 
-// deckOne.findCard(1);
-// drawCard(deckOne);
 
