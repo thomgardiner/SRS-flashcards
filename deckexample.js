@@ -1,11 +1,13 @@
 const moment = require('moment');
 let newDeck = [];
 
-const Deck = function(){
+const Deck = function(title){
+    this.title = title;
     this.idCount = 0;
     this.currentCard = null;
     this.items = [];
-
+    this.due = [];
+    
     //deck methods
     this.addCard = function(front, back){
         let id = this.idCount++;
@@ -34,7 +36,7 @@ const Deck = function(){
         this.currentCard.calculateNextUp();
         console.log("Card will appear again: " + this.currentCard.nextUp.format("dddd, MMMM Do YYYY, h:mm:ss a"));
     }
-    this.printCurrentCard = function(){
+    this.print = function(){
         console.log("|------------------------------------------------|");
         console.log("Front: " + this.currentCard.front);
         console.log("Back: " + this.currentCard.back);
@@ -64,11 +66,14 @@ const Card = function(front, back, id){
         this.nextUp = moment();
         this.nextUp.add(adjustment, 'h');
     }
- 
+    this.calculatePoints = function(){
+        this.level = Math.floor(this.points / 20);
+        console.log(this.level);
+    }
 }
 
 const createTestDeck = function(num){
-    newDeck = new Deck();
+    newDeck = new Deck("Test Deck");
     for(i=0; i < num; i++){
         newDeck.addCard("this is the front " + num, "this is the back " + num);
     }
@@ -76,4 +81,5 @@ const createTestDeck = function(num){
 
 createTestDeck(3);
 newDeck.drawCard();
-newDeck.printCurrentCard();
+newDeck.currentCard.points = 60;
+newDeck.currentCard.calculatePoints();
