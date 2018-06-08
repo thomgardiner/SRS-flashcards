@@ -1,3 +1,3 @@
-# Benkyou! 
+# Benkyō!
 
 An SRS flashcard application. 
