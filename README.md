@@ -1,1 +1,3 @@
-# SRS-flashcards
+# Benkyou! 
+
+An SRS flashcard application. 
