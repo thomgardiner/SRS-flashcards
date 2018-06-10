@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/thomgardiner/SRS-flashcards#readme",
   "dependencies": {
-    "moment": "^2.22.1"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "moment": "^2.22.1",
+    "mongoose": "^5.1.4"
   }
 }
