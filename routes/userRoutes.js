@@ -10,6 +10,8 @@ module.exports = function(app){
 
     app.put('/users/:username', users.update);
 
+    app.put('/users/:username/add', users.addDeck);
+
     app.delete('/users/:username', users.delete);
 
 }
