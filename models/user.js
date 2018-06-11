@@ -1,9 +1,11 @@
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-let UserSchema = new Schema({
+const UserSchema = new Schema({
     name: {type: String, required: true, max: 100},
-    price: {type: Number, required: true},
+    email: {type: String, required: true, max: 100},
+    joined: {type: String, required: true, max: 100},
+    decks: []
 });
 
 module.exports = mongoose.model('User', UserSchema);
