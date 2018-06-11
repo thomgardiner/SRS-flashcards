@@ -61,17 +61,21 @@ exports.delete = (req, res) => {
 
 exports.addDeck = (req, res) =>{
 
-    let target = req.param.target;
+    let target = req.params.username;
     let deck = {
-        deckname: req.param.deckname,
-        createdBy: req.param.createdBy,
-        cards: req.param.cards
+        deckname: req.body.deckname,
+        createdBy: req.params.username,
+        cards: req.body.cards
     }
 
     User.findOneAndUpdate({username: target}, {
         $push: {decks: deck}
-    });
-}
+    }).then(function(){
+        res.send(req.body.deckname + " has been added to " + target + "'s decklist!");
+    })
+
+};
+
 
 exports.addCardToDeck = (req, res) =>{
 

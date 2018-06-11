@@ -12,6 +12,13 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+// app.use(session({
+//   secret: 'work hard',
+//   resave: true,
+//   saveUninitialized: false
+// }));
+
 const mongoDB = process.env.MONGODB_URI || dbURL;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
