@@ -2,8 +2,6 @@ const User = require('../models/user');
 
 exports.create = (req, res) => {
 
-    console.log(req.body);
-
     if(!req.body){
         return res.status(400).send({
             message: "cannot be empty"
@@ -13,8 +11,8 @@ exports.create = (req, res) => {
     const user = new User({
         username: req.body.username,
         email: req.body.email,
+        password: req.body.password,
         joined: req.body.joined,
-        decks: req.body.decks
     })
 
     user.save(function(err){
@@ -24,7 +22,7 @@ exports.create = (req, res) => {
 };
 
 exports.getAll = (req, res) => {
-    User.find().then(function(users){
+    User.find().select('-password').then(function(users){
         res.send(users)
     });
 };
