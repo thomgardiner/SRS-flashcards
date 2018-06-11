@@ -22,7 +22,7 @@ exports.create = (req, res) => {
 };
 
 exports.getAll = (req, res) => {
-    User.find().select('-password').then(function(users){
+    User.find().select().then(function(users){
         res.send(users)
     });
 };
