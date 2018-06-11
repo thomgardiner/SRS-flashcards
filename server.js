@@ -21,27 +21,21 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function() {
     console.log("connected to the mainframe");
 
-
-    let newModel = new User({name: 'bob', email: 'bob@test.com', joined: '1999'});
-    newModel.save(function(err){
-        if (err) return handleError(err);
-        console.log("saved");// saved
-        console.log(db);
-        console.log("///////////////////////////////////");
-        console.log(db.collections);
-        console.log("///////////////////////////////////");
-        console.log("///////////////////////////////////");
-        console.log(db.collections["users"]);
-    })
-
-   
+    // let newModel = new User({username: 'greg', email: 'greg@test.com', joined: '1997', decks: []});
+    // newModel.save(function(err){
+    //     if (err) return handleError(err);
+    //     console.log("saved");// saved
+    //     console.log(db);
+    //     console.log("///////////////////////////////////");
+    //     console.log(db.collections);
+    //     console.log("///////////////////////////////////");
+    //     console.log("///////////////////////////////////");
+    //     console.log(db.collections["users"]);
+    // })
 
 });
 
-
-
-
-require('./routes/apiRoutes.js')(app); 
+require('./routes/userRoutes.js')(app); 
 require('./routes/htmlRoutes.js')(app);
 
 app.listen(PORT, function() {

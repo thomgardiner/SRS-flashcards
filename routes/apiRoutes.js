@@ -1,18 +1,15 @@
 module.exports = function(app){
 
-var express = require('express');
+    const user = require('../controllers/user')
 
-app.get('/test', function(req, res) {
-    res.send("I work");
-  });
+    app.post('/users', users.create);
 
-app.get('/user', function(req, res){
-    res.send('user stuff');
-});
+    app.get('/users', users.findAll);
 
-app.post('/new', function(req, res){
+    app.get('/users/:username', notes.findOne);
 
-});
+    app.put('/users/:username', notes.update);
 
+    app.delete('/users/:username', notes.delete);
 }
 
