@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 
 const User = require('./models/user.js');
 
@@ -13,11 +16,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// app.use(session({
-//   secret: 'work hard',
-//   resave: true,
-//   saveUninitialized: false
-// }));
+// passport.use(new Strategy(
+//   function(username, password, cb) {
+//     db.users.findByUsername(username, function(err, user) {
+//       if (err) { return cb(err); }
+//       if (!user) { return cb(null, false); }
+//       if (user.password != password) { return cb(null, false); }
+//       return cb(null, user);
+//     });
+//   }));
+
+
+// // Configure Passport authenticated session persistence.
+// //
+// // In order to restore authentication state across HTTP requests, Passport needs
+// // to serialize users into and deserialize users out of the session.  The
+// // typical implementation of this is as simple as supplying the user ID when
+// // serializing, and querying the user record by ID from the database when
+// // deserializing.
+// passport.serializeUser(function(user, cb) {
+//   cb(null, user.id);
+// });
+
+// passport.deserializeUser(function(id, cb) {
+//   db.users.findById(id, function (err, user) {
+//     if (err) { return cb(err); }
+//     cb(null, user);
+//   });
+// });
+
 
 const mongoDB = process.env.MONGODB_URI || dbURL;
 mongoose.connect(mongoDB);
@@ -29,9 +56,41 @@ db.once('open', function() {
     console.log("connected to the mainframe");
 });
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false },
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}))
+
+console.log("after mongo but not connected");
+
 require('./routes/userRoutes.js')(app);
 require('./routes/deckRoutes.js')(app);
 require('./routes/htmlRoutes.js')(app);
+require('./routes/loginRoutes.js')(app);
+
+// app.use(require('morgan')('combined'));
+// app.use(require('cookie-parser')());
+// app.use(require('body-parser').urlencoded({ extended: true }));
+
+// // app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+
+// app.set('trust proxy', 1) // trust first proxy
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: true }
+// }))
+
+console.log("after session stuff");
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 app.listen(PORT, function() {

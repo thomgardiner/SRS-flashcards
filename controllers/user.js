@@ -76,8 +76,11 @@ exports.addDeck = (req, res) =>{
 
 };
 
+exports.getSession = (req, res) =>{
+    res.send(req.session);
+}
+
 
 exports.addCardToDeck = (req, res) =>{
-
 }
 
