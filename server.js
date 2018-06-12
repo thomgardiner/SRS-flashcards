@@ -73,25 +73,8 @@ require('./routes/deckRoutes.js')(app);
 require('./routes/htmlRoutes.js')(app);
 require('./routes/loginRoutes.js')(app);
 
-// app.use(require('morgan')('combined'));
-// app.use(require('cookie-parser')());
-// app.use(require('body-parser').urlencoded({ extended: true }));
-
-// // app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
-
-// app.set('trust proxy', 1) // trust first proxy
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: true }
-// }))
 
 console.log("after session stuff");
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
