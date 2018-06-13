@@ -21,6 +21,9 @@ exports.login = (req, res) => {
         }
 
         bcrypt.compare(req.body.password, user.password, function (err, result) {
+
+          console.log(result);
+
           if (result === true) {
             req.session.username = user.username;
             console.log(req.session.username + " is logged in.");

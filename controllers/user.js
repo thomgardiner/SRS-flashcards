@@ -8,11 +8,17 @@ exports.create = (req, res) => {
         });
     }
 
+    if(req.body.password !== req.body.passwordconfirm){
+        return res.send("passwords don't match");
+    }
+
+    const timestamp = Date.now();
+
     const user = new User({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
-        joined: req.body.joined,
+        joined: timestamp
     })
 
     user.save(function(err){
