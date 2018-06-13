@@ -40,6 +40,13 @@ exports.getOne = (req, res) => {
     })
 };
 
+exports.getUserDecks = (req, res) => {
+    let query = req.session.username;
+    User.findOne({username: query }).then(function(data){
+        res.send(data);
+    })
+};
+
 exports.update = (req, res) => {
     if(!req.body.content){
         return res.status(400).send({
@@ -70,7 +77,7 @@ exports.addDeck = (req, res) =>{
     let target = req.params.username;
     let deck = {
         deckname: req.body.deckname,
-        createdBy: req.params.username,
+        createdBy: req.body.username,
         cards: req.body.cards
     }
 
@@ -81,11 +88,6 @@ exports.addDeck = (req, res) =>{
     })
 
 };
-
-exports.getSession = (req, res) =>{
-    res.send(req.session);
-}
-
 
 exports.addCardToDeck = (req, res) =>{
 }

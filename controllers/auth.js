@@ -49,3 +49,10 @@ exports.logout = (req, res) => {
         )
     }
 }
+
+exports.getSession = (req, res) =>{
+  if(!req.session.username){
+      res.send('cannot find logged in user');
+  }
+  res.send(req.session.username);
+}

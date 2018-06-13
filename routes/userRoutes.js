@@ -14,5 +14,7 @@ module.exports = function(app){
 
     app.delete('/users/:username', users.delete);
 
+    app.get('/getuserdecks', users.getUserDecks);
+
 }
 

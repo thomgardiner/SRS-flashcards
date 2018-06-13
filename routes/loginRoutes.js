@@ -6,5 +6,7 @@ module.exports = function(app){
 
     app.get('/logout', auth.logout);
 
+    app.get('/session', auth.getSession);
+
     
 }
