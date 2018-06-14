@@ -48,20 +48,11 @@ exports.getUserDecks = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    if(!req.body.content){
-        return res.status(400).send({
-            message: "cannot be empty"
-        });
-    }
-
     let query = req.params.username;
     User.findOneAndUpdate({username: query}, {
-        username: req.body.username,
-        email: req.body.email,
-        joined: req.body.joined,
         decks: req.body.decks
     }, {new: true}).then(function(users){
-        res.send(users);
+        res.send("deck has been updated");
     });
 };
 

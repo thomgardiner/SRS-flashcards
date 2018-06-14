@@ -4,8 +4,11 @@ let user;
 let userObj;
 let currentDeck;
 let deckHelper;
+let tempDeckLength = 0;
+let tempDeck;
+let deckLength;
 
-let now = Date.now();
+let now = Date.now().toString();
 
 const renderCards = (deckId) => {
     currentDeck = userObj.decks[deckId];  
@@ -19,7 +22,7 @@ const renderCards = (deckId) => {
     for(i=0; i < currentDeck.cards.length; i++){
     let newCard = $("<div>");
     newCard.addClass("study-card");
-    newCard.attr("card", i);
+    newCard.attr("id", "card-" + i);
     newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<input type="text" class="front-text-display" value="' + currentDeck.cards[i].front + '">'+ '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<input type="text" class="back-text-display" value="' + currentDeck.cards[i].back + '">');
     $(".card-container").append(newCard);
   }
@@ -29,12 +32,17 @@ const renderCards = (deckId) => {
 
 const addCard = (deckId) => {
 
-    console.log(deckHelper + " is the deck id");
+    // console.log(currentDeck);
+    // console.log(deckHelper + " is the deck id");
 
-    let deckLength = currentDeck.length;
+    deckLength = parseInt(currentDeck.cards.length);
+
+    // console.log(deckLength + " is the decklength");
+    // console.log(tempDeckLength + "is the tempdecklength");
+
     let blankCard = {
-        front: "this is the front", 
-        back: "this is the back",
+        front: "", 
+        back: "",
         points: 0,
         level: 1,
         timesSeen: now,
@@ -42,13 +50,58 @@ const addCard = (deckId) => {
         nextUp: now
                 
     }
-    
+
+    currentDeck.cards.push(blankCard);
+
+    // console.log(tempDeck.cards + "is the temporary deck");
+
     let newCard = $("<div>");
     newCard.addClass("study-card");
-    newCard.attr("card", deckLength + 1);
+    newCard.attr("id", "card-" + deckLength);
     newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<input type="text" class="front-text-display" value="' + "Front" + '">'+ '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<input type="text" class="back-text-display" value="' + "Back" + '">');
     $(".card-container").append(newCard);
-  
+}
+
+const saveDeck = () =>{
+
+    // console.log(userObj.decks);
+    // console.log(deckLength + "is length");
+
+    for(i=0; i < currentDeck.cards.length; i++){
+        let frontText = $("#card-" + i).find(".front-text-display").val();
+        currentDeck.cards[i].front = frontText;
+        let backText = $("#card-" + i).find(".back-text-display").val();
+        currentDeck.cards[i].back = backText;
+    }
+
+    // console.log(currentDeck);
+    // console.log(userObj);
+
+    let data ={
+        username: userObj.username,
+        email: userObj.email,
+        joined: userObj.joined,
+        decks: userObj.decks
+    }
+    // console.log(data);
+    $.ajax({
+        url: '/users/' + user + '/deck',
+        type: 'PUT',
+        data: {
+            decks: userObj.decks
+        },
+        success: function(data) {
+          console.log('Added deck.');
+        }
+      });
+
+    // let frontText = $(this).find(".front-text-display").val();
+    // let backText = $(this).find(".back-text-display").val();
+
+}
+
+const deleteDeck = () => {
+    
 }
 
 const renderDecks = (user) => {
@@ -90,6 +143,18 @@ const authorDisplay = (deck) => {
 
 }
 
+const editNavDisplay = (deck) => {
+
+    $('#create-deck-btn').hide();
+    $('#add-card-btn').show();
+    $('#save-deck-btn').show();
+    $('#share-deck-btn').show();
+    $('#go-back-btn').show();
+    $('#delete-deck').show();
+    $('.deck-wrapper').remove();
+
+}
+
 //grab user data
 $.get('/session', function(data) {
    user = data;
@@ -114,14 +179,8 @@ $("body").on("click", ".study-btn", function(){
 $("body").on("click", ".edit-btn", function(){
     let id = $(this).attr("deck");
     deckHelper = id;
-    console.log("edit button " + id);
-    $('#create-deck-btn').hide();
-    $('#add-card-btn').show();
-    $('#save-deck-btn').show();
-    $('#share-deck-btn').show();
-    $('#go-back-btn').show();
-    $('#delete-deck').show();
-    $('.deck-wrapper').remove();
+    tempDeck = userObj.decks[id];
+    editNavDisplay();
     renderCards(id);
   })
 
@@ -130,19 +189,20 @@ $("body").on("click", "#add-card-btn", function(){
     addCard();
   })
 
+$("body").on("click", "#save-deck-btn", function(){
+    saveDeck();
+  })
 
 
+// $("body").on("click", ".study-card", function(){
+//     let id = $(this).attr("card");
+//     console.log("study card" + id);
+//     let front = $(this).find(".front-text-display").val();
+//     let back = $(this).find(".back-text-display").val();
 
+//     console.log(front + " and " + back)
 
-$("body").on("click", ".study-card", function(){
-    let id = $(this).attr("card");
-    console.log("study card" + id);
-    let front = $(this).find(".front-text-display").val();
-    let back = $(this).find(".back-text-display").val();
-
-    console.log(front + " and " + back)
-
-  });
+//   });
 
 
 

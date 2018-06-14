@@ -8,7 +8,7 @@ module.exports = function(app){
 
     app.get('/users/:username', users.getOne);
 
-    app.put('/users/:username', users.update);
+    app.put('/users/:username/deck', users.update);
 
     app.put('/users/:username/add', users.addDeck);
 
