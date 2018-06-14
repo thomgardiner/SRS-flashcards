@@ -23,7 +23,7 @@ exports.create = (req, res) => {
 
     user.save(function(err){
         if (err) return handleError(err);
-        res.send(req.body.username + " has been added!");
+        res.redirect("/login");
     })
 };
 

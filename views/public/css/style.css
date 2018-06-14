@@ -1,0 +1,56 @@
+.deck-wrapper {
+    background-color: #1b7ff8;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid;
+    margin-top: 5px;
+}
+
+.container-fluid{
+    background-color: white;
+}
+
+#deck-container{
+    background-color: #E9ECEF;
+}
+
+body{
+    background-color: lightblue;
+}
+
+.study-btn {
+    position: absolute;
+    right: 15%;
+    margin-top: 4px;
+    width: 75px;
+    background-color: rgb(63, 245, 63);
+    cursor: pointer;
+}
+
+.edit-btn{
+    position: absolute;
+    margin-top: 4px;
+    right: 1%;
+    width: 75px;
+    background-color: rgb(243, 30, 30);
+    cursor: pointer;
+
+}
+
+.deck-wrapper{
+    height: 50px;
+}
+
+
+.deckname{
+    float:left;
+    margin-top: 15px;
+    margin-left: 2px;
+}
+
+.createdby{
+    float: left;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
