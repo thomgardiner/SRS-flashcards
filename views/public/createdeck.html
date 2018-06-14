@@ -13,35 +13,35 @@
     <script type="application/javascript" src="./js/createdeck.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
+    <div id="navbar" class="container">
         <div class="row">
         <div class="col-md-6">
             <ul class="nav nav-pills">
-                    <li class="nav-item" id="home-btn">
-                      <a class="nav-link" href="/home">Home</a>
+                    <li class="nav-item btn btn-lrg " id="home-btn">
+                      <a class="nav-link btn btn-lrg active" href="/home">Home</a>
                     </li>
-                    <li class="nav-item" id="mydecks-btn">
-                      <a class="nav-link active" href="/mydecks">My Decks</a>
+                    <li class="nav-item btn btn-lrg" id="mydecks-btn">
+                      <a class="nav-link" href="/mydecks">My Decks</a>
                     </li>
-                    <li class="nav-item" id="mydecks-btn">
+                    <li class="nav-item btn btn-lrg" id="mydecks-btn">
                       <a class="nav-link" href="/shared">Shared Decks</a>
                     </li>
                   </ul>
         </div>
-        <div class="col-md-2 offset-md-4">
+        <div class="col-md-4 offset-md-2">
             <ul class="nav nav-pills" id="settings-nav">
-                    <li class="nav-item" id="settings-btn">
-                      <a class="nav-link" href="/settings">User Settings</a>
+                    <li class="nav-item btn btn-lrg" id="settings-btn">
+                      <a class="nav-link btn btn-lrg" href="/settings">User Settings</a>
                     </li>
-                    <li class="nav-item" id="logout-btn">
-                        <a class="nav-link" href="/logout">Log Out</a>
+                    <li class="nav-item btn btn-lrg" id="logout-btn">
+                        <a class="nav-link btn btn-lrg" href="/logout">Log Out</a>
                       </li>
             </ul>
         </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="main-container">
       <div class="row">        
         <h2 class="display-3" id="mydecks">Create Deck</h2>
         <h2 class="display-3" id="decktitle"  style="display: none;"></h2>
@@ -50,7 +50,7 @@
 
       <div class="row">
           <div id="decknav" style="display: show;">
-            <a class="btn btn-primary btn-lg" role="button" id="add-deck">Add Deck</a>
+            <a class="btn btn-primary btn-lg" href="/mydecks" role="button" id="add-deck">Add Deck</a>
             <a class="btn btn-primary btn-lg" href="/mydecks" role="button">Go Back</a>
           </div>
       </div>

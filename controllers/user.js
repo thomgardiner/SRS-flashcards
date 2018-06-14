@@ -77,7 +77,7 @@ exports.addDeck = (req, res) =>{
     let target = req.params.username;
     let deck = {
         deckname: req.body.deckname,
-        createdBy: req.body.username,
+        createdBy: req.body.createdBy,
         cards: req.body.cards
     }
 

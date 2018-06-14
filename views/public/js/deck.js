@@ -41,13 +41,13 @@ const renderDecks = (user) => {
         $("#deck-wrapper-" + i).append(newDeck);
     
         let newStudyBtn = $("<div>");
-        newStudyBtn.addClass("study-btn btn");
+        newStudyBtn.addClass("study-btn btn btn-success");
         newStudyBtn.html("Study");
         newStudyBtn.attr("deck", i);
         $("#deck-wrapper-" + i).append(newStudyBtn);
     
         let newEditBtn = $("<div>");
-        newEditBtn.addClass("edit-btn btn");
+        newEditBtn.addClass("edit-btn btn btn-danger");
         newEditBtn.html("Edit");
         newEditBtn.attr("deck", i);
         $("#deck-wrapper-" + i).append(newEditBtn);
@@ -89,6 +89,8 @@ $("body").on("click", ".edit-btn", function(){
     let id = $(this).attr("deck");
     console.log("edit button " + id);
     $('#create-deck-btn').hide();
+    $('#add-card-btn').show();
+    $('#save-deck-btn').show();
     $('#share-deck-btn').show();
     $('#go-back-btn').show();
     $('#delete-deck').show();
