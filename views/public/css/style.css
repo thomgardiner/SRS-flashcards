@@ -81,6 +81,28 @@ body{
 
 }
 
+.front-edit{
+    margin-left: 5px;
+    margin-bottom: 0px;
+}
+
+.back-edit{
+    margin-left: 5px;
+    margin-bottom: 0px;
+}
+
+.front-text-display{
+    margin-left: 5px;
+    margin-bottom: 0px;
+    width: 45%;
+}
+
+.back-text-display{
+    margin-left: 5px;
+    margin-bottom: 15px;
+    width: 45%;
+}
+
 .deck-wrapper{
     height: 50px;
 }
@@ -97,19 +119,3 @@ body{
     margin-left: 5px;
     margin-top: 23.2px;
 }
-
-/* .front-edit{
-    float: left;
-} */
-
-/* .front-text-display{
-    float: left;
-} */
-
-/* .back-edit{
-    float: left;
-} */
-
-/* .back-text-display{
-    float: left;
-} */
