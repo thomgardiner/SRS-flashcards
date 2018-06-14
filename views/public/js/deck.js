@@ -40,7 +40,7 @@ $.get('/getuserdecks', function(data){
     let newDeck = $("<div>");
     newDeck.attr("id", "deck-" + i);
     newDeck.addClass("deck");
-    newDeck.html('<h4 class="deckname">' + userRes.decks[i].deckname + '</h4>' + '<p class="createdby"> by ' + userRes.decks[i].createdBy + '</p>');
+    newDeck.html('<h2 class="deckname">' + userRes.decks[i].deckname + '</h4>' + '<p class="createdby"> by ' + userRes.decks[i].createdBy + '</p>');
     $("#deck-wrapper-" + i).append(newDeck);
 
     let newStudyBtn = $("<div>");
@@ -60,13 +60,6 @@ $.get('/getuserdecks', function(data){
 
 //on click functions
 
-// $("body").on("click", ".deck-wrapper", function(){
-//   let id = $(this).attr("deck");
-//   console.log(id);
-// //   renderCards(id);
-// //   $('.deck-wrapper').hide();
-// })
-
 $("body").on("click", ".study-btn", function(){
     let id = $(this).attr("deck");
     console.log("study button" + id);
@@ -80,23 +73,5 @@ $("body").on("click", ".edit-btn", function(){
     // renderCards(id);
   //   $('.deck-wrapper').hide();
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
