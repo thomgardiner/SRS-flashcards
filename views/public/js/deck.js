@@ -58,6 +58,8 @@ const authorDisplay = (deck) => {
 
     $("#mydecks").hide();
     $("#decktitle").show();
+    $("#cardnum").show();
+    $("#cardnum").html(deck.cards.length + " cards");
     $("#decktitle").html(deck.deckname);
 
 }

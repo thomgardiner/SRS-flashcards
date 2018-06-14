@@ -36,9 +36,9 @@
     margin-top: 5px
 }
 
-/* body{
-    background-color: lightblue;
-} */
+body{
+    background-color: #444655;
+}
 
 #mydecks{
     text-align: center;
@@ -50,7 +50,7 @@
     margin: auto;
 }
 
-#authortitle{
+#cardnum{
     text-align: center;
     margin: auto;
 }
