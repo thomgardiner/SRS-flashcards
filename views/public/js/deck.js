@@ -1,17 +1,12 @@
 $(document).ready(function(){
 
-console.log("main.js is hooked up");
-
 let user;
 let userObj;
+let currentDeck;
 
 
 const renderCards = (deckId) => {
-
-
-    let currentDeck = userObj.decks[deckId];  
-    console.log(userObj);
-
+    currentDeck = userObj.decks[deckId];  
     authorDisplay(currentDeck)
 
     let cardContainer = $("<div>");
@@ -20,8 +15,6 @@ const renderCards = (deckId) => {
     $("#deck-container").append(cardContainer);
 
     for(i=0; i < currentDeck.cards.length; i++){
-    console.log(currentDeck.cards[i]);
-
     let newCard = $("<div>");
     newCard.addClass("study-card");
     newCard.attr("card", i);
@@ -72,41 +65,12 @@ const authorDisplay = (deck) => {
 //grab user data
 $.get('/session', function(data) {
    user = data;
-  //  console.log(user);
-  })
+})
 
 //initial deck render
 $.get('/getuserdecks', function(data){
-  userObj = data;
-  console.log(userObj);
-  // console.log(userRes.decks);
+    userObj = data;
     renderDecks(userObj);
-
-//   for(i=0; i < userRes.decks.length; i++){
-//     let newDeckWrapper = $("<div>");
-//     newDeckWrapper.attr("id", "deck-wrapper-" + i);
-//     newDeckWrapper.attr("deck", i);
-//     newDeckWrapper.addClass("deck-wrapper row");
-//     $("#deck-container").append(newDeckWrapper);
-    
-//     let newDeck = $("<div>");
-//     newDeck.attr("id", "deck-" + i);
-//     newDeck.addClass("deck");
-//     newDeck.html('<h2 class="deckname">' + userRes.decks[i].deckname + '</h4>' + '<p class="createdby"> by ' + userRes.decks[i].createdBy + '</p>');
-//     $("#deck-wrapper-" + i).append(newDeck);
-
-//     let newStudyBtn = $("<div>");
-//     newStudyBtn.addClass("study-btn btn");
-//     newStudyBtn.html("Study");
-//     newStudyBtn.attr("deck", i);
-//     $("#deck-wrapper-" + i).append(newStudyBtn);
-
-//     let newEditBtn = $("<div>");
-//     newEditBtn.addClass("edit-btn btn");
-//     newEditBtn.html("Edit");
-//     newEditBtn.attr("deck", i);
-//     $("#deck-wrapper-" + i).append(newEditBtn);
-//   }
 })
 
 
@@ -117,7 +81,7 @@ $("body").on("click", ".study-btn", function(){
     console.log("study button" + id);
     // renderCards(id);
   //   $('.deck-wrapper').hide();
-  })
+  });
 
 $("body").on("click", ".edit-btn", function(){
     let id = $(this).attr("deck");
@@ -125,5 +89,22 @@ $("body").on("click", ".edit-btn", function(){
     $('.deck-wrapper').remove();
     renderCards(id);
   })
+
+
+$("body").on("click", ".study-card", function(){
+    let id = $(this).attr("card");
+    console.log("study card" + id);
+    let front = $(this).find(".front-text-display").val();
+    let back = $(this).find(".back-text-display").val();
+
+    console.log(front + " and " + back)
+
+  });
+
+
+
+
+
+
 
 });
