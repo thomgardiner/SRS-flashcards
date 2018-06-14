@@ -48,7 +48,6 @@ const addCard = (deckId) => {
         timesSeen: now,
         created: now,
         nextUp: now
-                
     }
 
     currentDeck.cards.push(blankCard);

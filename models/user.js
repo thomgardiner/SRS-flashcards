@@ -19,7 +19,14 @@ UserSchema.pre('save', function (next) {
       user.password = hash;
       next();
     })
-  });
+    bcrypt.hash(user.email, 10, function (err, hash){
+      if (err) {
+        return next(err);
+      }
+      user.email = hash;
+      next();
+    })
+});
 
 
 module.exports = mongoose.model('User', UserSchema);
