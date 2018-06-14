@@ -101,7 +101,24 @@ const saveDeck = () =>{
 }
 
 const deleteDeck = () => {
-    
+    userObj.decks.splice(deckHelper, 1);
+    console.log(userObj.decks);
+    let answer = confirm("Are you sure?");
+
+    if(!answer){
+        return console.log("Deletion stopped.");
+    }
+    $.ajax({
+        url: '/users/' + user + '/deck',
+        type: 'PUT',
+        data: {
+            decks: userObj.decks
+        },
+        success: function(data) {
+          console.log('deleted deck.');
+          window.location.href = '/mydecks';
+        }
+      });
 }
 
 const renderDecks = (user) => {
@@ -187,6 +204,10 @@ $("body").on("click", ".edit-btn", function(){
 $("body").on("click", "#add-card-btn", function(){
     console.log("added a card");
     addCard();
+  })
+
+  $("body").on("click", "#delete-deck", function(){
+    deleteDeck();
   })
 
 $("body").on("click", "#save-deck-btn", function(){
