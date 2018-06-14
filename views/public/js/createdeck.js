@@ -37,6 +37,10 @@ $(document).ready(function(){
 
      })
 
+     $("body").on("click", "#add-card", function(){
+
+     })
+
 
 
 

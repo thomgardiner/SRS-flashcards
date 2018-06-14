@@ -3,7 +3,9 @@ $(document).ready(function(){
 let user;
 let userObj;
 let currentDeck;
+let deckHelper;
 
+let now = Date.now();
 
 const renderCards = (deckId) => {
     currentDeck = userObj.decks[deckId];  
@@ -23,6 +25,30 @@ const renderCards = (deckId) => {
   }
 
   // let cardList = $("<div>");
+}
+
+const addCard = (deckId) => {
+
+    console.log(deckHelper + " is the deck id");
+
+    let deckLength = currentDeck.length;
+    let blankCard = {
+        front: "this is the front", 
+        back: "this is the back",
+        points: 0,
+        level: 1,
+        timesSeen: now,
+        created: now,
+        nextUp: now
+                
+    }
+    
+    let newCard = $("<div>");
+    newCard.addClass("study-card");
+    newCard.attr("card", deckLength + 1);
+    newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<input type="text" class="front-text-display" value="' + "Front" + '">'+ '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<input type="text" class="back-text-display" value="' + "Back" + '">');
+    $(".card-container").append(newCard);
+  
 }
 
 const renderDecks = (user) => {
@@ -87,6 +113,7 @@ $("body").on("click", ".study-btn", function(){
 
 $("body").on("click", ".edit-btn", function(){
     let id = $(this).attr("deck");
+    deckHelper = id;
     console.log("edit button " + id);
     $('#create-deck-btn').hide();
     $('#add-card-btn').show();
@@ -97,6 +124,14 @@ $("body").on("click", ".edit-btn", function(){
     $('.deck-wrapper').remove();
     renderCards(id);
   })
+
+$("body").on("click", "#add-card-btn", function(){
+    console.log("added a card");
+    addCard();
+  })
+
+
+
 
 
 $("body").on("click", ".study-card", function(){
