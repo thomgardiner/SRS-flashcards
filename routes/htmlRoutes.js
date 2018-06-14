@@ -17,15 +17,23 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../views/public/login.html"));
 });
     app.get("/mydecks", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/public/mydecks.html"));
+        res.sendFile(path.join(__dirname, "../views/public/mydecks.html"));
 });
 
     app.get("/shared", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/public/shared.html"));
+        res.sendFile(path.join(__dirname, "../views/public/shared.html"));
+});
+
+    app.get("/shared", function(req, res) {
+        res.sendFile(path.join(__dirname, "../views/public/shared.html"));
+});
+
+    app.get("/createdeck", function(req, res) {
+        res.sendFile(path.join(__dirname, "../views/public/createdeck.html"));
 });
 
     app.get("/settings", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/public/settings.html"));
+        res.sendFile(path.join(__dirname, "../views/public/settings.html"));
 });
 
 }

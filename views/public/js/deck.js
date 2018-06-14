@@ -88,6 +88,10 @@ $("body").on("click", ".study-btn", function(){
 $("body").on("click", ".edit-btn", function(){
     let id = $(this).attr("deck");
     console.log("edit button " + id);
+    $('#create-deck-btn').hide();
+    $('#share-deck-btn').show();
+    $('#go-back-btn').show();
+    $('#delete-deck').show();
     $('.deck-wrapper').remove();
     renderCards(id);
   })

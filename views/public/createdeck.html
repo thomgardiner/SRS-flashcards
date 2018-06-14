@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script type="application/javascript" src="./js/deck.js"></script>
+    <script type="application/javascript" src="./js/createdeck.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -41,25 +41,33 @@
         </div>
     </div>
 
-    <div class="container" id="main-container">
+    <div class="container">
       <div class="row">        
-        <h2 class="display-3" id="mydecks">My Decks</h2>
+        <h2 class="display-3" id="mydecks">Create Deck</h2>
         <h2 class="display-3" id="decktitle"  style="display: none;"></h2>
         </p>
         </div>
+
+      <div class="row">
+          <div id="decknav" style="display: show;">
+            <a class="btn btn-primary btn-lg" role="button" id="add-deck">Add Deck</a>
+            <a class="btn btn-primary btn-lg" href="/mydecks" role="button">Go Back</a>
+          </div>
+      </div>
+
       <div class="row">
         <h4 id="cardnum"  style="display: none;"></h4>
       </div>
       <div class="row">
-            <div id="decknav" style="display: show;">
-                <a class="btn btn-primary btn-lg" href="/createdeck" role="button" id="create-deck-btn" style="display: show">Create a Deck</a>
-                <a class="btn btn-primary btn-lg" href="/createdeck" role="button" id="share-deck-btn" style="display: none">Share Deck</a>
-                <a class="btn btn-primary btn-lg" href="/mydecks" role="button" id="go-back-btn" style="display: none">Go Back</a>
-                <a class="btn btn-primary btn-lg" id="delete-deck" href="/mydecks" role="button" id="go-back-btn" style="display: none">Delete Deck</a>
-            </div>
-        </div>
-      <div class="row">
-          <div class ="col-md-7 offset-md-2" id="deck-container">
+          <div class ="col-md-6 offset-md-3" id="deck-container">
+            <div class="row">
+                <h2>Deck Name: </h2>
+                <input type="text" id="deck-name-input" value="">
+              </div>
+            <div class="row">
+                <h2>Category: </h2>
+                <input type="text" id="deck-name-input" value="">
+              </div>
           </div>
         </div>
     </div>

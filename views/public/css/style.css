@@ -16,9 +16,17 @@
     margin-bottom: 5px;
 }
 
+#main-container{
+    -webkit-box-shadow: 7px 7px 21px 2px rgb(0, 0, 0);
+    -moz-box-shadow: 7px 7px 21px 2px rgb(0, 0, 0);
+    box-shadow: 7px 7px 21px 2px rgb(50, 50, 50);
+}
 
 .container-fluid{
     background-color: white;
+    -webkit-box-shadow: 7px 7px 21px 2px rgb(0, 0, 0);
+    -moz-box-shadow: 7px 7px 21px 2px rgb(0, 0, 0);
+    box-shadow: 7px 7px 21px 2px rgb(50, 50, 50);
 }
 
 .container{
@@ -33,7 +41,9 @@
 }
 
 #deck-container{
-    margin-top: 5px
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body{
@@ -50,11 +60,25 @@ body{
     margin: auto;
 }
 
+#decktitle{
+    text-align: center;
+    margin: auto;
+}
+
+
 #cardnum{
     text-align: center;
     margin: auto;
 }
 
+#decknav{
+    color:white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 
 #settings-nav{
     margin-left: 20%;
