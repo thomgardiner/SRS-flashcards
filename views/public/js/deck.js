@@ -240,6 +240,8 @@ const studyCardRender = () => {
 }
 
 const studyStep = () => {
+
+    console.log(selectedCards);
     $("#next-card").hide();
     $("#card-display").html('');
 
@@ -251,13 +253,15 @@ const studyStep = () => {
     $("#study-known").show();
     $("#study-unknown").show();
 
-    key = Math.floor(Math.random() * selectedCards.length);
+    key = selectedCards.shift();
+    console.log(key + " is the key");
     $("#card-display").html('<h3 id="front-card">' + currentDeck.cards[key].front + '</h3>');
-    selectedCards.splice(key, 1);
+    // selectedCards.splice(key, 1);
 
 }
 
 const studyShowAnswer = () => {
+    console.log(selectedCards);
     $("#study-known").hide();
     $("#study-unknown").hide();
     $("#next-card").show();
@@ -276,6 +280,7 @@ const studyStart = () => {
             selectedCards.push(i);
         }
 
+        console.log(selectedCards);
         studyCardRender();
         studyStep();
 
@@ -325,21 +330,20 @@ $("body").on("click", "#save-deck-btn", function(){
   })
 
 $("body").on("click", "#study-known", function(){
-    console.log(selectedCards.length);
     currentDeck.cards[key].points++;
     studyShowAnswer();
+
 })
 
 $("body").on("click", "#study-unknown", function(){
     console.log(selectedCards.length);
+    selectedCards.push(key);
     studyShowAnswer();
 })
 
 $("body").on("click", "#next-card", function(){
     studyStep();
 })
-
-
 
 $("body").on("click", ".study-card", function(){
     if(!study){

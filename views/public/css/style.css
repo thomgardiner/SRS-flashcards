@@ -24,8 +24,49 @@ body{
     
 }
 
-.btnclr{
-    background-color: 144978;
+/* .btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+} */
+ 
+.btn {
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nav-link{
+    background: #40798C;
+    color: #ffffff
+}
+
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-primary {
+    background: #40798C;
+    color: #ffffff;
+}
+
+.active{
+    background: #092E4C;
+}
+ 
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #3F6572;
+    color: #ffffff;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: #40798C;
+    box-shadow: none;
 }
 
 #navbar{
@@ -230,4 +271,27 @@ body{
     float: left;
     margin-left: 5px;
     margin-top: 23.2px;
+}
+
+.front-edit, .back-edit{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+
+.front-text-study, .back-text-study{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    text-align: center;
+}
+
+.front-text-display, .back-text-display{
+    margin-left: 35%;
+    margin-right: auto;
+    width: 200px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background: #092E4C;
 }
