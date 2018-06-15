@@ -163,7 +163,7 @@ const renderDecks = (user) => {
       }
 }
 
-const studyDeck = (deckId) => {
+const studyDeckOptions = (deckId) => {
     currentDeck = userObj.decks[deckId];  
     authorDisplay(currentDeck);
     studyOptionsRender();
@@ -214,6 +214,14 @@ const studyOptionsRender = () =>{
 
 }
 
+const studyRender = () => {
+    $('.study-container').hide();
+    $('.card-container').hide();
+    $('#go-back-btn').hide();
+    $('#start-study-btn').hide();
+    $('#cardnum').hide();
+}
+
 //grab user data
 $.get('/session', function(data) {
    user = data;
@@ -230,7 +238,7 @@ $.get('/getuserdecks', function(data){
 
 $("body").on("click", ".study-btn", function(){
     deckHelper = $(this).attr("deck");
-    studyDeck(deckHelper);
+    studyDeckOptions(deckHelper);
   $('.deck-wrapper').remove();
   });
 
@@ -252,6 +260,10 @@ $("body").on("click", "#save-deck-btn", function(){
     saveDeck();
   })
 
+  $("body").on("click", "#start-study-btn", function(){
+    studyRender();
+  })
+
 
 $("body").on("click", ".study-card", function(){
     if(!study){
@@ -268,6 +280,8 @@ $("body").on("click", ".study-card", function(){
         }
     }
   });
+
+
 
 
 
