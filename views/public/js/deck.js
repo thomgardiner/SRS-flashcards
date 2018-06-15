@@ -7,10 +7,11 @@ let deckHelper;
 let tempDeckLength = 0;
 let tempDeck;
 let deckLength;
+let study;
 
 let now = Date.now().toString();
 
-const renderCards = (deckId) => {
+const renderCards = (deckId, study) => {
     currentDeck = userObj.decks[deckId];  
     authorDisplay(currentDeck)
 
@@ -19,16 +20,29 @@ const renderCards = (deckId) => {
     cardContainer.attr("deck", deckId);
     $("#deck-container").append(cardContainer);
 
+  
     for(i=0; i < currentDeck.cards.length; i++){
-    let newCard = $("<div>");
-    newCard.addClass("study-card");
-    newCard.attr("id", "card-" + i);
-    newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<input type="text" class="front-text-display" value="' + currentDeck.cards[i].front + '">'+ '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<input type="text" class="back-text-display" value="' + currentDeck.cards[i].back + '">');
-    $(".card-container").append(newCard);
-  }
+        let newCard = $("<div>");
+        newCard.addClass("study-card");
+        newCard.attr("id", "card-" + i);
+        newCard.attr("card", i);
+        if(!study){
+            newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<input type="text" class="front-text-display" value="' + currentDeck.cards[i].front + '">'
+            + '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<input type="text" class="back-text-display" value="' + currentDeck.cards[i].back + '">');
+        }
+        else{
+            newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<p class="front-text-study">' + currentDeck.cards[i].front
+            + '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<p class="back-text-study lead" value="' + currentDeck.cards[i].back + '">');
 
-  // let cardList = $("<div>");
+
+
+        }
+        
+        
+        $(".card-container").append(newCard);
+        }
 }
+
 
 const addCard = (deckId) => {
 
@@ -149,6 +163,28 @@ const renderDecks = (user) => {
       }
 }
 
+const studyDeck = (deckId) => {
+    currentDeck = userObj.decks[deckId];  
+    authorDisplay(currentDeck);
+    studyOptionsRender();
+
+    study = true;
+
+    let studyContainer = $("<div>");
+    studyContainer.addClass("study-container");
+    studyContainer.attr("deck", deckId);
+    $("#deck-container").append(studyContainer);
+
+    let studyOptions = $("<div>");
+    studyOptions.addClass("study-options");
+    studyOptions.html('<div class="alert alert-success" role="alert">Select the cards you wish to study this session. By default, it will study your whole deck.</div>')
+    $(".study-container").append(studyOptions);
+
+    //'<div class="row" id="numselect"><p> Number of cards to study: </p></div><div class="row"><input id="study-num" val="20"</input></div>
+
+    renderCards(deckHelper, true);
+    }
+
 const authorDisplay = (deck) => {
 
     $("#mydecks").hide();
@@ -171,6 +207,13 @@ const editNavDisplay = (deck) => {
 
 }
 
+const studyOptionsRender = () =>{
+    $('#create-deck-btn').hide();
+    $('#start-study-btn').show();
+    $('#go-back-btn').show();
+
+}
+
 //grab user data
 $.get('/session', function(data) {
    user = data;
@@ -186,22 +229,18 @@ $.get('/getuserdecks', function(data){
 //on click functions
 
 $("body").on("click", ".study-btn", function(){
-    let id = $(this).attr("deck");
-    console.log("study button" + id);
-    // renderCards(id);
-  //   $('.deck-wrapper').hide();
+    deckHelper = $(this).attr("deck");
+    studyDeck(deckHelper);
+  $('.deck-wrapper').remove();
   });
 
 $("body").on("click", ".edit-btn", function(){
-    let id = $(this).attr("deck");
-    deckHelper = id;
-    tempDeck = userObj.decks[id];
+    deckHelper = $(this).attr("deck");
     editNavDisplay();
-    renderCards(id);
+    renderCards(deckHelper);
   })
 
 $("body").on("click", "#add-card-btn", function(){
-    console.log("added a card");
     addCard();
   })
 
@@ -214,17 +253,21 @@ $("body").on("click", "#save-deck-btn", function(){
   })
 
 
-// $("body").on("click", ".study-card", function(){
-//     let id = $(this).attr("card");
-//     console.log("study card" + id);
-//     let front = $(this).find(".front-text-display").val();
-//     let back = $(this).find(".back-text-display").val();
+$("body").on("click", ".study-card", function(){
+    if(!study){
 
-//     console.log(front + " and " + back)
-
-//   });
-
-
+    }
+    else{
+        let id = $(this).attr("card");
+        console.log("study card" + id);
+        if($(this).hasClass("selected")){
+            $(this).removeClass("selected")
+        }
+        else{
+            $(this).addClass("selected")
+        }
+    }
+  });
 
 
 

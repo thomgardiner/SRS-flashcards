@@ -32,8 +32,74 @@
     height: 50px;
 }
 
+#deck-row{
+    margin-bottom: 10px;
+}
+
+#copyright{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+}
+
+.study-options{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#study-num{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#numselect{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+#start-study{
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .nav-button{
     height: 15px;
+}
+
+#login-wrapper{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 198px;
+    background-color: #1b7ff8;
+    color: white;
+    border-radius: 10px;
+    border: 2px;
+    -webkit-box-shadow: 1px 1px 1px 1px rgb(50, 50, 50);
+    -moz-box-shadow: 1px 1px 1px 1px rgb(50, 50, 50);
+    box-shadow: 2px 2px 2px 1px rgb(50, 50, 50);
+}
+
+#signup-wrapper{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 198px;
+    background-color: #1b7ff8;
+    color: white;
+    border-radius: 10px;
+    border: 2px;
+    -webkit-box-shadow: 1px 1px 1px 1px rgb(50, 50, 50);
+    -moz-box-shadow: 1px 1px 1px 1px rgb(50, 50, 50);
+    box-shadow: 1px 1px 1px 0px rgb(50, 50, 50);
 }
 
 #lead-tag{
@@ -115,6 +181,10 @@ body{
     cursor: pointer;
     text-align: center;
 
+}
+
+.selected{
+    background-color: green;
 }
 
 .front-edit{

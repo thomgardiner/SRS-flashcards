@@ -28,7 +28,7 @@ db.once('open', function() {
 });
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'nic cage',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false },
