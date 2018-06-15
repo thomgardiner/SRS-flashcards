@@ -3,7 +3,7 @@ body{
 }
 
 .deck-wrapper {
-    background-color: #092E4C;
+    background-color: rgb(25, 67, 102);
     color: white;
     border-radius: 10px;
     border: 2px;
@@ -127,7 +127,7 @@ body{
     margin-right: auto;
     margin-bottom: 15px;
     width: 198px;
-    background-color: #092E4C;
+    background-color: #40798C;
     color: white;
     border-radius: 10px;
     border: 2px;
@@ -142,7 +142,7 @@ body{
     margin-right: auto;
     margin-bottom: 15px;
     width: 198px;
-    background-color: #092E4C;
+    background-color: #40798C;
     color: white;
     border-radius: 10px;
     border: 2px;
@@ -279,6 +279,13 @@ body{
     width: 100px;
 }
 
+#card-display{
+    height: 150px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .front-text-study, .back-text-study{
     margin-left: auto;
     margin-right: auto;
@@ -293,5 +300,17 @@ body{
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-    background: #092E4C;
+    background: rgb(25, 67, 102);
+}
+
+#card-study-area{
+    background-color: #092E4C;
+    color: white;
+    border-radius: 10px;
+    border: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }

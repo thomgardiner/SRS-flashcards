@@ -36,12 +36,7 @@ const renderCards = (deckId, study) => {
         else{
             newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<p class="front-text-study">' + currentDeck.cards[i].front
             + '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<p class="back-text-study">' + currentDeck.cards[i].back);
-
-
-
         }
-        
-        
         $(".card-container").append(newCard);
         }
 }
@@ -204,6 +199,7 @@ const editNavDisplay = (deck) => {
     $('#add-card-btn').show();
     $('#save-deck-btn').show();
     $('#share-deck-btn').show();
+    $('#del-card-btn').show();
     $('#go-back-btn').show();
     $('#delete-deck').show();
     $('.deck-wrapper').remove();
@@ -231,7 +227,7 @@ const studyCardRender = () => {
     let studyContainer = $("<div>");
     studyContainer.addClass("study-container");
     studyContainer.attr("deck", deckHelper);
-    $("#deck-container").append(studyContainer);
+    $("#card-study-area").append(studyContainer);
 
     let cardDisplay = $("<div>");
     cardDisplay.attr("id", "card-display");
@@ -241,12 +237,14 @@ const studyCardRender = () => {
 
 const studyStep = () => {
 
+    $("#cardnum").html(selectedCards.length + " cards left!");
     console.log(selectedCards);
     $("#next-card").hide();
     $("#card-display").html('');
 
     if(selectedCards.length === 0){
         $("#card-display").html("All finished!")
+        $("#go-back-btn").show();
         return console.log("done")
     }
 
@@ -271,19 +269,17 @@ const studyShowAnswer = () => {
 }
 
 const studyStart = () => {
-    $("#decktitle").hide();
+    $("#decktitle").remove();
+    $("#cardnum").show();
     console.log(currentDeck);
     if(!selectedCards){
         selectedCards = [];
-
         for(i=0; i < currentDeck.cards.length; i++){
             selectedCards.push(i);
         }
-
         console.log(selectedCards);
         studyCardRender();
         studyStep();
-
     }
 }
 
@@ -346,10 +342,7 @@ $("body").on("click", "#next-card", function(){
 })
 
 $("body").on("click", ".study-card", function(){
-    if(!study){
 
-    }
-    else{
         let id = $(this).attr("card");
         console.log("study card" + id);
         if($(this).hasClass("selected")){
@@ -359,7 +352,21 @@ $("body").on("click", ".study-card", function(){
             $(this).addClass("selected")
         }
     }
-  });
+  );
+
+
+  $("body").on("click", "#del-card-btn", function(){
+
+    let id = $(this).attr("card");
+    console.log("study card" + id);
+    if($(this).hasClass("selected")){
+        $(this).removeClass("selected")
+    }
+    else{
+        $(this).addClass("selected")
+    }
+}
+);
 
 
 

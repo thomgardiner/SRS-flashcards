@@ -45,26 +45,37 @@
         </p>
         </div>
       <div class="row">
+        <div id="card-study-area"></div>
+      </div>
+      <div class="row">
         <h4 id="cardnum" style="display: none;"></h4>
       </div>
       <div class="row">
             <div id="decknav" style="display: show;">
                 <a class="btn btn-primary btn-lg btnclr" href="/createdeck" role="button" id="create-deck-btn" style="display: show">Create a Deck</a>
                 <a class="btn btn-primary btn-lg btnclr" role="button" id="add-card-btn" style="display: none">Add a New Card</a>
-                <a class="btn btn-primary btn-lg btnclr" role="button" id="share-deck-btn" style="display: none">Share Deck</a>
+                <a class="btn btn-primary btn-lg btnclr" role="button" id="del-card-btn" style="display: none">Delete Selected Card</a>
                 <a class="btn btn-primary btn-lg btnclr" href="/mydecks" role="button" id="go-back-btn" style="display: none">Go Back</a>
-                <a class="btn btn-primary btn-lg btn-success" role="button" id="save-deck-btn" style="display: none">Save Deck</a>
-                <a class="btn btn-primary btn-lg btn-danger" role="button" id="delete-deck" style="display: none">Delete Deck</a>
+                <!-- <a class="btn btn-lg btn-success" role="button" id="save-deck-btn" style="display: none">Save Deck</a>
+                <a class="btn btn-lg btnclr btn-danger" role="button" id="delete-deck" style="display: none">Delete Deck</a> -->
                 <a class="btn btn-lg btn-success" role="button" id="start-study-btn" style="display: none">Start Studying</a>
-                <a class="btn btn-primary btn-lg btnclr" role="button" id="study-known" style="display: none">I know this!</a>
-                <a class="btn btn-primary btn-lg btnclr" role="button" id="study-unknown" style="display: none">I don't know.</a>
+                <a class="btn btn-lg btn-success" role="button" id="study-known" style="display: none">I know this!</a>
+                <a class="btn btn-lg btnclr btn-danger" role="button" id="study-unknown" style="display: none">I don't know.</a>
                 <a class="btn btn-primary btn-lg btnclr" role="button" id="next-card" style="display: none">Next Card</a>
             </div>
         </div>
+      <div class="row">
+          <div id="decknav" style="display: show;">
+              <a class="btn btn-lg btn-success" role="button" id="save-deck-btn" style="display: none">Save Deck</a>
+              <a class="btn btn-lg btnclr btn-danger" role="button" id="delete-deck" style="display: none">Delete Deck</a>
+              <a class="btn btn-primary btn-lg btnclr" role="button" id="share-deck-btn" style="display: none">Share Deck</a>
+              </div>
+          </div>
       <div class="row" id="deck-row">
           <div class ="col-md-7 offset-md-2" id="deck-container">
           </div>
         </div>
     </div>
+    <p id="copyright"> ©2018 Thomas Gardiner</p>
 </body>
 </html>
