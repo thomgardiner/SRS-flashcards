@@ -8,6 +8,8 @@ let tempDeckLength = 0;
 let tempDeck;
 let deckLength;
 let study;
+let selectedCards;
+let key;
 
 let now = Date.now().toString();
 
@@ -26,13 +28,14 @@ const renderCards = (deckId, study) => {
         newCard.addClass("study-card");
         newCard.attr("id", "card-" + i);
         newCard.attr("card", i);
+
         if(!study){
             newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<input type="text" class="front-text-display" value="' + currentDeck.cards[i].front + '">'
             + '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<input type="text" class="back-text-display" value="' + currentDeck.cards[i].back + '">');
         }
         else{
             newCard.html('<h2 class="front-edit">' + 'Front: ' + '</h2>' + '<p class="front-text-study">' + currentDeck.cards[i].front
-            + '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<p class="back-text-study lead" value="' + currentDeck.cards[i].back + '">');
+            + '<h2 class="back-edit">' + 'Back: ' + '</h2>' + '<p class="back-text-study">' + currentDeck.cards[i].back);
 
 
 
@@ -215,11 +218,68 @@ const studyOptionsRender = () =>{
 }
 
 const studyRender = () => {
-    $('.study-container').hide();
-    $('.card-container').hide();
+    $('.study-container').remove();
+    $('.card-container').remove();
     $('#go-back-btn').hide();
     $('#start-study-btn').hide();
     $('#cardnum').hide();
+    studyStart();
+}
+
+const studyCardRender = () => {
+
+    let studyContainer = $("<div>");
+    studyContainer.addClass("study-container");
+    studyContainer.attr("deck", deckHelper);
+    $("#deck-container").append(studyContainer);
+
+    let cardDisplay = $("<div>");
+    cardDisplay.attr("id", "card-display");
+    $(".study-container").append(cardDisplay);
+
+}
+
+const studyStep = () => {
+    $("#next-card").hide();
+    $("#card-display").html('');
+
+    if(selectedCards.length === 0){
+        $("#card-display").html("All finished!")
+        return console.log("done")
+    }
+
+    $("#study-known").show();
+    $("#study-unknown").show();
+
+    key = Math.floor(Math.random() * selectedCards.length);
+    $("#card-display").html('<h3 id="front-card">' + currentDeck.cards[key].front + '</h3>');
+    selectedCards.splice(key, 1);
+
+}
+
+const studyShowAnswer = () => {
+    $("#study-known").hide();
+    $("#study-unknown").hide();
+    $("#next-card").show();
+    $("#card-display").html('<h3 id="front-card">' + currentDeck.cards[key].front + '</h3><br>' 
+                        +   '<h3 id="back-card">' + currentDeck.cards[key].back) + '</h3>';
+
+}
+
+const studyStart = () => {
+    $("#decktitle").hide();
+    console.log(currentDeck);
+    if(!selectedCards){
+        selectedCards = [];
+
+        for(i=0; i < currentDeck.cards.length; i++){
+            selectedCards.push(i);
+        }
+
+        studyCardRender();
+        studyStep();
+
+    }
 }
 
 //grab user data
@@ -263,6 +323,22 @@ $("body").on("click", "#save-deck-btn", function(){
   $("body").on("click", "#start-study-btn", function(){
     studyRender();
   })
+
+$("body").on("click", "#study-known", function(){
+    console.log(selectedCards.length);
+    currentDeck.cards[key].points++;
+    studyShowAnswer();
+})
+
+$("body").on("click", "#study-unknown", function(){
+    console.log(selectedCards.length);
+    studyShowAnswer();
+})
+
+$("body").on("click", "#next-card", function(){
+    studyStep();
+})
+
 
 
 $("body").on("click", ".study-card", function(){

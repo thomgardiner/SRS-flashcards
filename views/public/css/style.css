@@ -1,5 +1,9 @@
+body{
+    background-color: #2A4E6E;
+}
+
 .deck-wrapper {
-    background-color: #1b7ff8;
+    background-color: #092E4C;
     color: white;
     border-radius: 10px;
     border: 2px;
@@ -11,13 +15,17 @@
 }
 
 .study-card{
-    background-color: #1b7ff8;
+    background-color: #092E4C;
     color: white;
     border-radius: 10px;
     border: 2px;
     margin-top: 5px;
     margin-bottom: 5px;
     
+}
+
+.btnclr{
+    background-color: 144978;
 }
 
 #navbar{
@@ -78,7 +86,7 @@
     margin-right: auto;
     margin-bottom: 15px;
     width: 198px;
-    background-color: #1b7ff8;
+    background-color: #092E4C;
     color: white;
     border-radius: 10px;
     border: 2px;
@@ -93,7 +101,7 @@
     margin-right: auto;
     margin-bottom: 15px;
     width: 198px;
-    background-color: #1b7ff8;
+    background-color: #092E4C;
     color: white;
     border-radius: 10px;
     border: 2px;
@@ -124,9 +132,7 @@
     margin-right: auto;
 }
 
-body{
-    background-color: #3E6680;
-}
+
 
 #mydecks{
     text-align: center;
@@ -184,7 +190,7 @@ body{
 }
 
 .selected{
-    background-color: green;
+    background-color: #228C3A;
 }
 
 .front-edit{
