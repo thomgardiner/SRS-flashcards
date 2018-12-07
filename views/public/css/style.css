@@ -24,6 +24,21 @@ body{
     
 }
 
+#deck-create-container{
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        width: 198px;
+        background-color: #40798C;
+        color: white;
+        border-radius: 10px;
+        border: 2px;
+        -webkit-box-shadow: 1px 1px 1px 1px rgb(50, 50, 50);
+        -moz-box-shadow: 1px 1px 1px 1px rgb(50, 50, 50);
+        box-shadow: 2px 2px 2px 1px rgb(50, 50, 50);
+    }
+
 /* .btn {
     padding: 14px 24px;
     border: 0 none;

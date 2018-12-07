@@ -397,7 +397,9 @@ $("body").on("click", ".study-card", function(){
   $("body").on("click", "#del-card-btn", function(){
         for(i=0; i < currentDeck.cards.length; i++){
            if($("#card-" + i).hasClass("selected")){
+               console.log(i + " has been selected");
                currentDeck.cards.splice(i, 1);
+               console.log(currentDeck);
                $("#card-" + i).remove();
             }
         }
