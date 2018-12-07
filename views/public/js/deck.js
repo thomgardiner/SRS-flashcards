@@ -197,10 +197,10 @@ const studyDeckOptions = (deckId) => {
     studyContainer.attr("deck", deckId);
     $("#deck-container").append(studyContainer);
 
-    let studyOptions = $("<div>");
-    studyOptions.addClass("study-options");
-    studyOptions.html('<div class="alert alert-success" role="alert">Select the cards you wish to study this session. By default, it will study your whole deck.</div>')
-    $(".study-container").append(studyOptions);
+    // let studyOptions = $("<div>");
+    // studyOptions.addClass("study-options");
+    // studyOptions.html('<div class="alert alert-success" role="alert">Select the cards you wish to study this session. By default, it will study your whole deck.</div>')
+    // $(".study-container").append(studyOptions);
 
     //'<div class="row" id="numselect"><p> Number of cards to study: </p></div><div class="row"><input id="study-num" val="20"</input></div>
 
