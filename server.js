@@ -4,13 +4,16 @@ const path = require("path");
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const dotEnv = require('dotenv');
 
+dotEnv.config();
 
 const User = require('./models/user.js');
 
-const dbURL = "mongodb://admin:password1@ds231205.mlab.com:31205/benkyo"
+const dbURL = process.env.DBURL;
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
