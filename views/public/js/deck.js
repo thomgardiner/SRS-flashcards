@@ -299,11 +299,10 @@ const studyStart = () => {
     $("#cardnum").show();
 
     selectedCards = [];
-    console.log(selectedCards);
 
     for(i=0; i < currentDeck.cards.length; i++){
-        if($("#card-" + i).hasClass("selected")){
-            console.log("card " + i)
+        if($("#card-0").hasClass("study-card")){
+            console.log("HEYYYYY")
          }
      }
 
@@ -312,7 +311,7 @@ const studyStart = () => {
         for(i=0; i < currentDeck.cards.length; i++){
             selectedCards.push(i);
         }
-        console.log(selectedCards);
+        console.log(selectedCards + "selected");
         studyCardRender();
         studyStep();
     }
