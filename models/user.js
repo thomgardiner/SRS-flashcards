@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     username: {type: String, required: true, unique: true, max: 30},
-    password: {type: String, required: true, max: 30},
+    password: {type: String, required: true, max: 150},
     email: {type: String, required: true, unique: true, max: 75},
     joined: {type: String, required: true, max: 75},
     decks: []
@@ -15,17 +15,8 @@ UserSchema.pre('save', function (next) {
     bcrypt.hash(user.password, 10, function (err, hash){
       if (err) {
         console.log(err);
-        user.password = hash;
-        return next(err);
       }
       user.password = hash;
-      //next();
-    })
-    bcrypt.hash(user.email, 10, function (err, hash){
-      if (err) {
-        return next(err);
-      }
-      user.email = hash;
       next();
     })
 });
