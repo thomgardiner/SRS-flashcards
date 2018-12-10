@@ -11,6 +11,9 @@ let study;
 let selectedCards;
 let key;
 
+let currentScore = 0;
+let totalScore = 0;
+
 let now = Date.now().toString();
 
 const renderCards = (deckId, study) => {
@@ -261,6 +264,8 @@ const studyCardRender = () => {
 
 const studyStep = () => {
 
+    console.log(totalScore);
+
     $("#cardnum").html(selectedCards.length + " cards left!");
     console.log(selectedCards);
     $("#next-card").hide();
@@ -295,8 +300,13 @@ const studyShowAnswer = () => {
 
 
 const studyStart = () => {
+
+    let currentScore = 0;
+    let totalScore = 0;
+
     $("#decktitle").remove();
     $("#cardnum").show();
+    $("#score").show();
 
     selectedCards = [];
 
@@ -366,6 +376,9 @@ $("body").on("click", "#save-deck-btn", function(){
 $("body").on("click", "#study-known", function(){
     currentDeck.cards[key].points++;
     studyShowAnswer();
+    currentScore++;
+    totalScore++;
+    $("#score").html(currentScore + " out of " + totalScore + " - " + (currentScore/totalScore * 100).toString().substring(0,4) + "%");
 
 })
 
@@ -373,6 +386,9 @@ $("body").on("click", "#study-unknown", function(){
     console.log(selectedCards.length);
     selectedCards.push(key);
     studyShowAnswer();
+    totalScore++;
+    $("#score").html(currentScore + " out of " + totalScore);
+    $("#score").html(currentScore + " out of " + totalScore + " - " + (currentScore/totalScore * 100).toString().substring(0,4) + "%");
 })
 
 $("body").on("click", "#next-card", function(){

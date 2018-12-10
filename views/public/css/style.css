@@ -211,6 +211,12 @@ body{
     margin: auto;
 }
 
+#score{
+    text-align: center;
+    margin: auto;
+}
+
+
 #decknav{
     color:white;
     text-align: center;
